@@ -3,12 +3,17 @@ import React, { useEffect, useState } from "react";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
-import { editColorService, deleteColorService } from '../services/colorServices';
+// import { editColorService, deleteColorService } from '../services/colorServices';
 import fetchColorService from '../services/fetchColorService';
 
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
+
+  useEffect( () => {
+    console.log("what we get", fetchColorService())
+    // setColors(fetchColorService())
+  }, [])
 
   const toggleEdit = (value) => {
     setEditing(value);
