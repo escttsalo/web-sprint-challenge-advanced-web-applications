@@ -1,14 +1,12 @@
 import axiosWithAuth from '../helpers/axiosWithAuth';
 
 const fetchColorService = () => {
-    axiosWithAuth().get('/colors')
-        .then( res => {
-            console.log(res.data)
-            return res.data
-        })
-        .catch( err => {
-            alert(err)
-        })
+    return (
+        axiosWithAuth()
+            .get('/colors')
+            .then( res => res )
+            .catch( err => err)
+        )
 }
 
 export default fetchColorService;

@@ -25,10 +25,13 @@ const Login = () => {
 
   const submit = e => {
     e.preventDefault()
+    if(credentials.username || credentials.password === ''){
+      setError("Username and Password are required!")
+    }
     axiosWithAuth().post("/login", credentials)
       .then( res => {
         localStorage.setItem("token", res.data.payload)
-        push('/bubblepage')
+        push('/bubbles')
       })
       .catch( err => {
         setError("Username or Password is incorrect. Please see readme.")
